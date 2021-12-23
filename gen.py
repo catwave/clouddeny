@@ -43,10 +43,10 @@ def gather(args):
         gcp_ips = requests.get(gcp_url, allow_redirects=True).json()
 
         for item in gcp_ips["prefixes"]:
-            all_ips += str(item.get("ipv4Prefix")) + " "
-        #TODO
-        #for item in gcp_ips["prefixes"]:
-            #all_ips += str(item.get("ipv6Prefix")) + " "
+            if item.get("ipv4Prefix"):
+                all_ips += str(item.get("ipv4Prefix")) + " "
+            elif item.get("ipv6Prefix"):
+                all_ips += str(item.get("ipv6Prefix")) + " "
 
     if args.block_oci:
         logger.info('Fetching OCI')
