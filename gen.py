@@ -18,7 +18,7 @@ def gather(args):
     all_ips = ''
 
     if args.block_aws:
-        logger.info('Checking for AWS')
+        logger.info('Fetching AWS')
         aws_url = 'https://ip-ranges.amazonaws.com/ip-ranges.json'
         aws_ips = requests.get(aws_url, allow_redirects=True).json()
         
@@ -38,7 +38,7 @@ def gather(args):
                 all_ips += prefix + " "
 
     if args.block_gcp:
-        logger.info('Checking for GCP')
+        logger.info('Fetching GCP')
         gcp_url = 'https://www.gstatic.com/ipranges/cloud.json'
         gcp_ips = requests.get(gcp_url, allow_redirects=True).json()
 
@@ -49,7 +49,7 @@ def gather(args):
             #all_ips += str(item.get("ipv6Prefix")) + " "
 
     if args.block_oci:
-        logger.info('Checking for OCI')
+        logger.info('Fetching OCI')
         oci_url = 'https://docs.cloud.oracle.com/en-us/iaas/tools/public_ip_ranges.json'
         oci_ips = requests.get(oci_url, allow_redirects=True).json()
 
