@@ -8,7 +8,6 @@ Deny from '''
 
 from argparse import ArgumentParser
 import requests
-from netaddr import IPNetwork, IPAddress
 from lxml import html
 import csv
 import coloredlogs
